@@ -30,7 +30,6 @@ public class SplashPresenter extends BasePresenter<SplashView> {
         if (session.isAuthenticated()) {
             this.userInteractor.validateUserStillAuthenticated()
                     .subscribe(this::onUserIsStillAuthenticated, this::onAuthenticationFailure);
-
         } else  {
             view.navigateToLogin();
         }
