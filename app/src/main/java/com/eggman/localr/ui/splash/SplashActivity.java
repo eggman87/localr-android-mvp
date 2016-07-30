@@ -42,8 +42,8 @@ public class SplashActivity extends BaseActivity implements SplashView {
     }
 
     @Override
-    public void displayWelcomeBack() {
-        Toast.makeText(this, "Welcome Back!", Toast.LENGTH_SHORT).show();
+    public void displayWelcomeBack(String name) {
+        Toast.makeText(this, String.format("Welcome Back, %s!", name), Toast.LENGTH_SHORT).show();
     }
 
     @Override

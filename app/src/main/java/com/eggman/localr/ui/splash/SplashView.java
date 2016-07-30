@@ -6,7 +6,7 @@ package com.eggman.localr.ui.splash;
  */
 
 public interface SplashView {
-    void displayWelcomeBack();
+    void displayWelcomeBack(String name);
     void navigateToLogin();
     void navigateToHome();
 }
