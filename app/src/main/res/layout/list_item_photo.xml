@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable name="photo" type="com.eggman.localr.model.Photo" />
+    </data>
+
+    <FrameLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/list_item_phto_iv_thumb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_overlay"
+            android:paddingLeft="5dp"
+            android:textColor="@color/colorTextPrimary"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="@{photo.title}"
+            android:layout_gravity="bottom"
+            android:visibility="@{photo.title.length() &lt; 1 ? View.GONE:View.VISIBLE}"/>
+    </FrameLayout>
+</layout>
