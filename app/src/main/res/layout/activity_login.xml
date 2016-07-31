@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/welcome" />
+        <TextView
+            android:id="@+id/act_login_welcome_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:textColor="@color/colorTextPrimary"
+            android:background="@color/black_overlay"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="@string/app_name"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_overlay"
+            android:layout_below="@id/act_login_welcome_header"
+            android:textColor="@color/colorTextPrimary"
+            android:gravity="center_horizontal"
+            android:textSize="25sp"
+            android:paddingBottom="20dp"
+            android:text="@string/app_description"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorTextPrimary"
+            android:padding="20dp"
+            android:layout_marginBottom="50dp"
+            android:onClick="loginClicked"
+            android:elevation="5dp"
+            android:text="@string/login_to_flickr"/>
+    </RelativeLayout>
+</layout>

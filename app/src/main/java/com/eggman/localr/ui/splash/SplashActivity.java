@@ -26,12 +26,12 @@ public class SplashActivity extends BaseActivity implements SplashView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_splash);
+
         injector().inject(this);
         presenter.attach(this);
 
-        setContentView(R.layout.activity_splash);
-
-        new Handler().postDelayed(this::startProcessing, 500);
+        startProcessing();
     }
 
     @Override
@@ -43,17 +43,21 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
     @Override
     public void displayWelcomeBack(String name) {
-        Toast.makeText(this, String.format("Welcome Back, %s!", name), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, String.format(getString(R.string.welcome_back_format), name), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToLogin() {
+        finish();
+
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void navigateToHome() {
+        finish();
+
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }

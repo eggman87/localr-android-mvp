@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">localr</string>
+    <string name="welcome_back_format">Welcome Back, %s!</string>
+    <string name="app_description">a geo-based flickr app</string>
+    <string name="login_to_flickr">LOGIN TO FLICKR</string>
+    <string name="login_received">login received, hang tight.</string>
 </resources>

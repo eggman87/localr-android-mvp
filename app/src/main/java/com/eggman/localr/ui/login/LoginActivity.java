@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.Toast;
 
+import com.eggman.localr.R;
 import com.eggman.localr.ui.BaseActivity;
 import com.eggman.localr.ui.home.HomeActivity;
 
@@ -23,9 +26,10 @@ public class LoginActivity extends BaseActivity implements LoginView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_login);
+
         injector().inject(this);
         presenter.attach(this);
-        presenter.startAuthenticationProcess();
     }
 
     @Override
@@ -40,6 +44,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
         super.onNewIntent(intent);
 
         if (intent.getAction().equals(Intent.ACTION_VIEW)) {
+            Toast.makeText(this, R.string.login_received, Toast.LENGTH_SHORT).show();
             presenter.getAccessTokenForVerifier(intent.getData().toString());
         }
     }
@@ -55,10 +60,15 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void navigateToHome() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
     public void displayErrorToUser(String error) {
         //todo: show dialog, with retry logic.
+    }
+
+    public void loginClicked(View view) {
+        presenter.startAuthenticationProcess();
     }
 }
