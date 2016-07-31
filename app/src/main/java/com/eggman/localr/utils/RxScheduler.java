@@ -4,7 +4,7 @@ import rx.Observable;
 
 /**
  * Created by mharris on 7/29/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public interface RxScheduler {
 

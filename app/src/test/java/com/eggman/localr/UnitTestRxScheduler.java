@@ -6,7 +6,7 @@ import rx.Observable;
 
 /**
  * Created by mharris on 7/30/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public class UnitTestRxScheduler implements RxScheduler {
     @Override

@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 /**
  * Created by mharris on 7/29/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public class LoginPresenter extends BasePresenter<LoginView> {
 

@@ -14,7 +14,7 @@ import timber.log.Timber;
 
 /**
  * Created by mharris on 7/29/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public class OauthInteractor {
 

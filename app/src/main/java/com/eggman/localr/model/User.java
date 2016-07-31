@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by mharris on 7/30/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public class User {
     public String id;

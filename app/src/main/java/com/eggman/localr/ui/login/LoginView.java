@@ -2,7 +2,7 @@ package com.eggman.localr.ui.login;
 
 /**
  * Created by mharris on 7/29/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public interface LoginView {
 

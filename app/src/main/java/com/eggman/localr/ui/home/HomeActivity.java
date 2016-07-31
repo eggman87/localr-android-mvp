@@ -32,7 +32,7 @@ import icepick.State;
 
 /**
  * Created by mharris on 7/29/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public class HomeActivity extends BaseActivity implements HomeView {
 

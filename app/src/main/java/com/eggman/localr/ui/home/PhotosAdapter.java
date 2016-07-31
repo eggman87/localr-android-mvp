@@ -23,7 +23,7 @@ import java.util.List;
 
 /**
  * Created by mharris on 7/30/16.
- * DispatchHealth.
+ * eggmanapps.
  *
  */
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoViewHolder> {

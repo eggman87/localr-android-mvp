@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 
 /**
  * Created by mharris on 7/30/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 @PrepareForTest({OAuth10aService.class})
 public class TestoOauthInteractor {

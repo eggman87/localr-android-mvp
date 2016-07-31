@@ -16,7 +16,7 @@ import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 
 /**
  * Created by mharris on 7/29/16.
- * DispatchHealth.
+ * eggmanapps.
  *
  * Using singleton for presenters this app is so simple, on a real app I would recommend coming up with a way
  * so that the presenter stays alive for activity config change but can be killed once the activity

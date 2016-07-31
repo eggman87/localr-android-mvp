@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 
 /**
  * Created by mharris on 7/30/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 @PrepareForTest({Settings.Secure.class, AESCrypt.class})
 public class JsonSharedPreferencesTest {

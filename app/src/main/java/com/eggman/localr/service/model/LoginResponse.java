@@ -4,7 +4,7 @@ import com.eggman.localr.model.User;
 
 /**
  * Created by mharris on 7/30/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public class LoginResponse {
     public User user;

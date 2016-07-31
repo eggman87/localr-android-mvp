@@ -12,7 +12,7 @@ import rx.functions.Func1;
 
 /**
  * Created by mharris on 7/30/16.
- * DispatchHealth.
+ * eggmanapps.
  */
 public class UserInteractor {
 
