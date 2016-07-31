@@ -43,6 +43,18 @@ dependencies {
     testCompile "org.powermock:powermock-api-mockito:1.6.2"
     testCompile "org.powermock:powermock-classloading-xstream:1.6.2"
 
+    //junit tests require all classes imported/used to be on classpath (reactive location provider
+    //references classes in these libs.
+    testCompile ("com.google.android.gms:play-services-location:9.2.1") {
+        exclude module: 'support-annotations'
+    }
+    testCompile ("com.google.android.gms:play-services-maps:9.2.1") {
+        exclude module: 'support-annotations'
+    }
+    testCompile ("com.google.android.gms:play-services-places:9.2.1") {
+        exclude module: 'support-annotations'
+    }
+
     compile 'com.scottyab:aescrypt:0.0.1'
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.android.support:design:24.1.1'

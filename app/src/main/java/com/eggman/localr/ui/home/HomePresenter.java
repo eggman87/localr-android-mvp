@@ -8,6 +8,7 @@ import com.eggman.localr.ui.BasePresenter;
 import com.google.android.gms.location.LocationRequest;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -43,15 +44,28 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 .setInterval(100);
 
         locationProvider.getUpdatedLocation(request)
-                .subscribe(this::locationReceived);
+                .timeout(10, TimeUnit.SECONDS)
+                .subscribe(this::locationReceived, this::onErrorFindingLocation);
     }
 
     private void locationReceived(Location location) {
         photosInteractor.getPhotos(location.getLatitude(), location.getLongitude())
-                .subscribe(this::onPhotosLoaded);
+                .subscribe(this::onPhotosLoaded, this::onErrorLoadingPhotos);
     }
 
     private void onPhotosLoaded(List<Photo> photos) {
-        view.displayPhotos(photos);
+        if (photos.size() == 0) {
+            view.displayNoPhotosFound();
+        } else {
+            view.displayPhotos(photos);
+        }
+    }
+
+    private void onErrorFindingLocation(Throwable throwable) {
+        view.displayLocationNotFound();
+    }
+
+    private void onErrorLoadingPhotos(Throwable throwable) {
+        view.displayErrorLoadingPhotos();
     }
 }

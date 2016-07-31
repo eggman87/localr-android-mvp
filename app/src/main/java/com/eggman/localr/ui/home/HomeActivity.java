@@ -83,6 +83,16 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     @Override
+    public void displayLocationNotFound() {
+
+    }
+
+    @Override
+    public void displayErrorLoadingPhotos() {
+
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 

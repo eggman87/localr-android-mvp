@@ -12,4 +12,6 @@ public interface HomeView {
 
     void displayPhotos(List<Photo> photos);
     void displayNoPhotosFound();
+    void displayLocationNotFound();
+    void displayErrorLoadingPhotos();
 }
