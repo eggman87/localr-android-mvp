@@ -5,6 +5,8 @@ import android.content.Context;
 import com.eggman.localr.BuildConfig;
 import com.eggman.localr.Config;
 import com.eggman.localr.LocalApplication;
+import com.eggman.localr.analytics.Analytics;
+import com.eggman.localr.analytics.GoogleAnalytics;
 import com.eggman.localr.service.FlickrApi;
 import com.eggman.localr.service.Oauth1SigningInterceptor;
 import com.eggman.localr.session.JsonSharedPrefsSession;
@@ -146,5 +148,11 @@ public class AppModule {
     @Singleton
     public RxBus bus() {
         return new RxBus();
+    }
+
+    @Provides
+    @Singleton
+    public Analytics analytics(Context context) {
+        return new GoogleAnalytics(context);
     }
 }

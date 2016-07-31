@@ -17,6 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.eggman.localr.R;
+import com.eggman.localr.analytics.Screens;
 import com.eggman.localr.databinding.ActivityHomeBinding;
 import com.eggman.localr.model.Photo;
 import com.eggman.localr.ui.BaseActivity;
@@ -184,5 +185,10 @@ public class HomeActivity extends BaseActivity implements HomeView {
                     break;
             }
         }
+    }
+
+    @Override
+    protected String getScreenName() {
+        return Screens.HOME;
     }
 }

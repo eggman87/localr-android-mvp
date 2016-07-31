@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.eggman.localr.LocalApplication;
+import com.eggman.localr.analytics.Analytics;
 import com.eggman.localr.injection.AppComponent;
 import com.eggman.localr.session.Session;
 import com.eggman.localr.utils.RxBus;
@@ -23,12 +24,14 @@ import rx.Subscription;
  * session state in onStop when the session has data that needs to be saved.
  */
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Inject
     protected Session session;
     @Inject
     protected RxBus bus;
+    @Inject
+    protected Analytics analytics;
 
     private Subscription eventSubscription;
 
@@ -39,7 +42,7 @@ public class BaseActivity extends AppCompatActivity {
         injector().inject(this);
 
         Icepick.restoreInstanceState(this, savedInstanceState);
-
+        analytics.trackScreen(getScreenName());
     }
 
     @Override
@@ -79,4 +82,6 @@ public class BaseActivity extends AppCompatActivity {
     protected LocalApplication app() {
         return (LocalApplication) getApplication();
     }
+
+    protected abstract String getScreenName();
 }

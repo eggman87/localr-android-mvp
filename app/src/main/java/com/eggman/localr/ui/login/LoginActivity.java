@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.eggman.localr.R;
+import com.eggman.localr.analytics.Screens;
 import com.eggman.localr.ui.BaseActivity;
 import com.eggman.localr.ui.home.HomeActivity;
 
@@ -70,5 +71,10 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     public void loginClicked(View view) {
         presenter.startAuthenticationProcess();
+    }
+
+    @Override
+    protected String getScreenName() {
+        return Screens.LOGIN;
     }
 }

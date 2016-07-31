@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "634723628008",
+    "project_id": "firebase-localr"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634723628008:android:e839d471e3efbdb0",
+        "android_client_info": {
+          "package_name": "com.eggman.localr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBldLSPED5MjYEjSm0xgP0HI6sDoExPkEQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-71480134-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

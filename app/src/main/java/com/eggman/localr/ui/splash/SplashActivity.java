@@ -2,10 +2,10 @@ package com.eggman.localr.ui.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.Toast;
 
 import com.eggman.localr.R;
+import com.eggman.localr.analytics.Screens;
 import com.eggman.localr.ui.BaseActivity;
 import com.eggman.localr.ui.home.HomeActivity;
 import com.eggman.localr.ui.login.LoginActivity;
@@ -64,5 +64,10 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
     private void startProcessing() {
         presenter.checkLogin();
+    }
+
+    @Override
+    protected String getScreenName() {
+        return Screens.SPLASH;
     }
 }
