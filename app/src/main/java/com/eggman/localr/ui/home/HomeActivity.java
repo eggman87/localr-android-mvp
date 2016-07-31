@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -70,13 +71,15 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     public void displayPhotos(List<Photo> photos) {
+        this.view.actHomeProgress.setVisibility(View.GONE);
+
         setPhotos(photos);
         animateItemsIn();
     }
 
     @Override
     public void displayNoPhotosFound() {
-
+        this.view.actHomeContainer.setRefreshing(false);
     }
 
     @Override
@@ -95,6 +98,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     private void setupView() {
         this.view.actHomeContainer.setVisibility(View.INVISIBLE);
+        this.view.actHomeContainer.setColorSchemeColors(color(R.color.colorPrimary), color(R.color.colorAccent), color(R.color.colorPrimaryDark));
 
         this.adapter = new PhotosAdapter(picasso);
         RecyclerView photosList = this.view.actHomeRvPhotos;
@@ -103,6 +107,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         photosList.setLayoutManager(new StaggeredGridLayoutManager(isLandscape ? 3:2, StaggeredGridLayoutManager.VERTICAL));
 
+        view.actHomeContainer.setOnRefreshListener(() -> presenter.getPhotosForUsersLocation());
     }
 
     private void locationPermissionsGranted(){
@@ -126,6 +131,8 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     private void setPhotos(List<Photo> photos){
+        this.view.actHomeContainer.setRefreshing(false);
+
         this.photos = (ArrayList<Photo>) photos;
         this.adapter.addPhotos(photos);
     }
@@ -137,5 +144,9 @@ public class HomeActivity extends BaseActivity implements HomeView {
             Animation bottomUp = AnimationUtils.loadAnimation(HomeActivity.this, R.anim.bottom_up);
             view.actHomeContainer.startAnimation(bottomUp);
         }, 750);
+    }
+
+    private int color(@ColorRes int color) {
+        return ContextCompat.getColor(this, color);
     }
 }

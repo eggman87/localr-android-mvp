@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
-        android:id="@+id/act_home_container"
-        android:orientation="vertical" android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/act_home_rv_photos"
+        <ProgressBar
+            android:id="@+id/act_home_progress"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:indeterminate="true"/>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/act_home_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
 
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/act_home_rv_photos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </FrameLayout>
 </layout>
