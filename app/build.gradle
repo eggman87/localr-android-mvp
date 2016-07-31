@@ -35,6 +35,13 @@ android {
 
 dependencies {
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+
+    //some of our deps are not mockable....https://youtu.be/qtpwYvvDm2c
+    testCompile "org.powermock:powermock-module-junit4:1.6.2"
+    testCompile "org.powermock:powermock-module-junit4-rule:1.6.2"
+    testCompile "org.powermock:powermock-api-mockito:1.6.2"
+    testCompile "org.powermock:powermock-classloading-xstream:1.6.2"
 
     compile 'com.scottyab:aescrypt:0.0.1'
     compile 'com.android.support:appcompat-v7:24.1.1'
