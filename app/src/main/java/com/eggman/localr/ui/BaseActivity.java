@@ -1,7 +1,9 @@
 package com.eggman.localr.ui;
 
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.eggman.localr.LocalApplication;
@@ -60,6 +62,10 @@ public class BaseActivity extends AppCompatActivity {
 
         eventSubscription.unsubscribe();
         session.shouldPersistIfNecessary(this);
+    }
+
+    protected int color(@ColorRes int color) {
+        return ContextCompat.getColor(this, color);
     }
 
     protected void handleEvent(Object object) {

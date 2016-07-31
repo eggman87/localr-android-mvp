@@ -44,6 +44,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 .setInterval(100);
 
         locationProvider.getUpdatedLocation(request)
+                .first()
                 .timeout(10, TimeUnit.SECONDS)
                 .subscribe(this::locationReceived, this::onErrorFindingLocation);
     }

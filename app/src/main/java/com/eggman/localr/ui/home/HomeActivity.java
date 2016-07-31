@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -171,10 +170,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
             Animation bottomUp = AnimationUtils.loadAnimation(HomeActivity.this, R.anim.bottom_up);
             view.actHomeContainer.startAnimation(bottomUp);
         }, 750);
-    }
-
-    private int color(@ColorRes int color) {
-        return ContextCompat.getColor(this, color);
     }
 
     private void dialogButtonClicked(DialogButtonClickedEvent event) {
