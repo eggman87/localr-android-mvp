@@ -1,12 +1,11 @@
 package com.eggman.localr.ui.splash;
 
+import com.eggman.localr.interactor.UserInteractor;
 import com.eggman.localr.model.User;
 import com.eggman.localr.session.Session;
 import com.eggman.localr.ui.BasePresenter;
 
 import javax.inject.Inject;
-
-import rx.functions.Action1;
 
 /**
  * Created by mharris on 7/29/16.

@@ -1,4 +1,4 @@
-package com.eggman.localr.ui.login;
+package com.eggman.localr.interactor;
 
 import android.net.Uri;
 

@@ -2,6 +2,7 @@ package com.eggman.localr.ui.home;
 
 import android.location.Location;
 
+import com.eggman.localr.interactor.PhotosInteractor;
 import com.eggman.localr.model.Photo;
 import com.eggman.localr.ui.BasePresenter;
 import com.google.android.gms.location.LocationRequest;

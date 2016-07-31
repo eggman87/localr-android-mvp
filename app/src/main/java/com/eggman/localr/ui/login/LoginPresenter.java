@@ -1,5 +1,6 @@
 package com.eggman.localr.ui.login;
 
+import com.eggman.localr.interactor.OauthInteractor;
 import com.eggman.localr.session.Session;
 import com.eggman.localr.ui.BasePresenter;
 import com.github.scribejava.core.model.OAuth1AccessToken;
