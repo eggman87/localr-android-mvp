@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import com.eggman.localr.LocalApplication;
 import com.eggman.localr.injection.AppComponent;
 import com.eggman.localr.session.Session;
+import com.eggman.localr.utils.RxBus;
 
 import javax.inject.Inject;
 
 import icepick.Icepick;
+import rx.Subscription;
 
 /**
  * Created by mharris on 7/29/16.
@@ -23,6 +25,10 @@ public class BaseActivity extends AppCompatActivity {
 
     @Inject
     protected Session session;
+    @Inject
+    protected RxBus bus;
+
+    private Subscription eventSubscription;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +37,7 @@ public class BaseActivity extends AppCompatActivity {
         injector().inject(this);
 
         Icepick.restoreInstanceState(this, savedInstanceState);
+
     }
 
     @Override
@@ -41,10 +48,22 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        eventSubscription = bus.toObserverable().subscribe(this::handleEvent);
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
 
+        eventSubscription.unsubscribe();
         session.shouldPersistIfNecessary(this);
+    }
+
+    protected void handleEvent(Object object) {
+
     }
 
     protected AppComponent injector() {

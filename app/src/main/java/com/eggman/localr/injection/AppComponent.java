@@ -1,6 +1,7 @@
 package com.eggman.localr.injection;
 
 import com.eggman.localr.ui.BaseActivity;
+import com.eggman.localr.ui.shared.AlertDialogFragment;
 import com.eggman.localr.ui.splash.SplashActivity;
 import com.eggman.localr.ui.home.HomeActivity;
 import com.eggman.localr.ui.login.LoginActivity;
@@ -22,4 +23,5 @@ public interface AppComponent {
     void inject(SplashActivity a);
     void inject(LoginActivity a);
     void inject(HomeActivity a);
+    void inject(AlertDialogFragment f);
 }

@@ -10,6 +10,7 @@ import com.eggman.localr.service.Oauth1SigningInterceptor;
 import com.eggman.localr.session.JsonSharedPrefsSession;
 import com.eggman.localr.session.Session;
 import com.eggman.localr.utils.RxAndroidScheduler;
+import com.eggman.localr.utils.RxBus;
 import com.eggman.localr.utils.RxScheduler;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuth10aService;
@@ -139,5 +140,11 @@ public class AppModule {
     @Provides
     public Picasso picasso(Context context) {
         return Picasso.with(context);
+    }
+
+    @Provides
+    @Singleton
+    public RxBus bus() {
+        return new RxBus();
     }
 }

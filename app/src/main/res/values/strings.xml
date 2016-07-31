@@ -4,4 +4,10 @@
     <string name="app_description">a geo-based flickr app</string>
     <string name="login_to_flickr">LOGIN TO FLICKR</string>
     <string name="login_received">login received, hang tight.</string>
+
+    <string name="alert_location_failed">Unable to find location. Please make sure location services are enabled.</string>
+    <string name="alert_photos_error">Unable to load photos. Please make sure your network connection is enabled.</string>
+
+    <string name="alert_retry">retry</string>
+    <string name="alert_exit">exit</string>
 </resources>

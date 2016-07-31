@@ -21,6 +21,8 @@ import com.eggman.localr.R;
 import com.eggman.localr.databinding.ActivityHomeBinding;
 import com.eggman.localr.model.Photo;
 import com.eggman.localr.ui.BaseActivity;
+import com.eggman.localr.ui.shared.AlertDialogFragment;
+import com.eggman.localr.ui.shared.DialogButtonClickedEvent;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -48,6 +50,8 @@ public class HomeActivity extends BaseActivity implements HomeView {
     private PhotosAdapter adapter;
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
+    private static final int TAG_LOCATION_FAILED = 2;
+    private static final int TAG_API_FAILED = 3;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,6 +74,15 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     @Override
+    protected void handleEvent(Object event) {
+        super.handleEvent(event);
+
+        if (event instanceof DialogButtonClickedEvent) {
+            dialogButtonClicked((DialogButtonClickedEvent) event);
+        }
+    }
+
+    @Override
     public void displayPhotos(List<Photo> photos) {
         this.view.actHomeProgress.setVisibility(View.GONE);
 
@@ -84,12 +97,16 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     public void displayLocationNotFound() {
-
+        AlertDialogFragment fragment = AlertDialogFragment.newInstance(TAG_LOCATION_FAILED,
+                R.string.alert_location_failed, R.string.alert_retry, R.string.alert_exit);
+        fragment.show(getSupportFragmentManager(), "location");
     }
 
     @Override
     public void displayErrorLoadingPhotos() {
-
+        AlertDialogFragment fragment = AlertDialogFragment.newInstance(TAG_API_FAILED,
+                R.string.alert_photos_error, R.string.alert_retry, R.string.alert_exit);
+        fragment.show(getSupportFragmentManager(), "photos");
     }
 
     @Override
@@ -158,5 +175,19 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     private int color(@ColorRes int color) {
         return ContextCompat.getColor(this, color);
+    }
+
+    private void dialogButtonClicked(DialogButtonClickedEvent event) {
+        //for now just allow retry or exiting app.
+        if (event.getDialogTag() == TAG_LOCATION_FAILED || event.getDialogTag() == TAG_API_FAILED) {
+            switch (event.getSelectedAction()) {
+                case DialogButtonClickedEvent.CONFIRM_CLICKED:
+                    presenter.getPhotosForUsersLocation();
+                    break;
+                case DialogButtonClickedEvent.CANCEL_CLICKED:
+                    finish();
+                    break;
+            }
+        }
     }
 }
