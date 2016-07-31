@@ -34,11 +34,10 @@ public class OauthInteractor {
                 try {
                     requestToken = authService.getRequestToken();
                     subscriber.onNext(authService.getAuthorizationUrl(requestToken) + "&perms=read");
+                    subscriber.onCompleted();
                 } catch (Exception e) {
                     Timber.e("getting authorization url failed", e);
                     subscriber.onError(e);
-                } finally {
-                    subscriber.onCompleted();
                 }
             }).compose(scheduler.applySchedulers());
     }
@@ -52,11 +51,10 @@ public class OauthInteractor {
                     throw new IllegalStateException("request token not present, you must call getAuthorizationUrl first.");
                 }
                 subscriber.onNext(authService.getAccessToken(requestToken, verifier));
+                subscriber.onCompleted();
             } catch (Exception e) {
                 Timber.e("getting access token failed", e);
                 subscriber.onError(e);
-            } finally {
-                subscriber.onCompleted();
             }
         }).compose(scheduler.applySchedulers());
     }

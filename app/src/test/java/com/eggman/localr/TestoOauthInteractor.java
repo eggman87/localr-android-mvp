@@ -8,7 +8,6 @@ import com.github.scribejava.core.oauth.OAuth10aService;
 import org.junit.Rule;
 import org.junit.Test;
 import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 
@@ -24,7 +23,6 @@ import static org.junit.Assert.*;
  * Created by mharris on 7/30/16.
  * DispatchHealth.
  */
-@PowerMockIgnore({"org.mockito.*", "org.robolectric.*", "android.*"})
 @PrepareForTest({OAuth10aService.class})
 public class TestoOauthInteractor {
 
@@ -59,7 +57,23 @@ public class TestoOauthInteractor {
     }
 
     @Test
-    public void testGetAuthorizationUrlBadNetwork() {
+    public void testGetAuthorizationUrlBadNetwork() throws IOException {
+        //given
+        OAuth10aService authService = PowerMockito.mock(OAuth10aService.class);
+        RxScheduler rxScheduler = new UnitTestRxScheduler();
 
+        OauthInteractor interactor = new OauthInteractor(authService, rxScheduler);
+        OAuth1RequestToken token = new OAuth1RequestToken("baba", "booey");
+
+        when(authService.getRequestToken()).thenReturn(token);
+        when(authService.getAuthorizationUrl(any(OAuth1RequestToken.class))).thenThrow(new RuntimeException("unable to connect to flickr"));
+
+        TestSubscriber<String> testSubscriber = new TestSubscriber<>();
+        //when
+        interactor.getAuthorizationUrl().subscribe(testSubscriber);
+
+        //then
+        testSubscriber.assertError(RuntimeException.class);
+        testSubscriber.assertNoValues();
     }
 }
