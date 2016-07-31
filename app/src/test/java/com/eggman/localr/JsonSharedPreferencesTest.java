@@ -40,8 +40,13 @@ public class JsonSharedPreferencesTest {
         ContentResolver resolver = mock(ContentResolver.class);
 
         when(context.getContentResolver()).thenReturn(resolver);
-        when(AESCrypt.encrypt(anyString(), anyString())).thenReturn("encrypted_json");
-        when(Settings.Secure.getString(resolver, "android_id")).thenReturn("my_device_id");
+
+        String stateJson = "{\"accessToken\":\"accessToken\",\"accessTokenSecret\":\"accessTokenSecret\"}";
+        String deviceId = "my_device_id";
+
+        when(Settings.Secure.getString(resolver, "android_id")).thenReturn(deviceId);
+        when(AESCrypt.encrypt(deviceId, stateJson)).thenReturn("encrypted_json");
+
         when(context.getSharedPreferences(anyString(), anyInt())).thenReturn(preferences);
         when(preferences.getString("session", "")).thenReturn("");
         when(preferences.edit()).thenReturn(editor);
