@@ -35,15 +35,15 @@ public class TestoOauthInteractor {
         OAuth10aService authService = PowerMockito.mock(OAuth10aService.class);
         RxScheduler rxScheduler = new UnitTestRxScheduler();
 
-        OauthInteractor interactor = new OauthInteractor(authService, rxScheduler);
         OAuth1RequestToken token = new OAuth1RequestToken("baba", "booey");
-
         when(authService.getRequestToken()).thenReturn(token);
         when(authService.getAuthorizationUrl(any(OAuth1RequestToken.class))).thenReturn("http://spacejam.com");
 
         TestSubscriber<String> testSubscriber = new TestSubscriber<>();
+
         //when
-        interactor.getAuthorizationUrl().subscribe(testSubscriber);
+        OauthInteractor sut = new OauthInteractor(authService, rxScheduler);
+        sut.getAuthorizationUrl().subscribe(testSubscriber);
 
         //then
         testSubscriber.assertNoErrors();
@@ -61,16 +61,16 @@ public class TestoOauthInteractor {
         //given
         OAuth10aService authService = PowerMockito.mock(OAuth10aService.class);
         RxScheduler rxScheduler = new UnitTestRxScheduler();
-
-        OauthInteractor interactor = new OauthInteractor(authService, rxScheduler);
         OAuth1RequestToken token = new OAuth1RequestToken("baba", "booey");
 
         when(authService.getRequestToken()).thenReturn(token);
         when(authService.getAuthorizationUrl(any(OAuth1RequestToken.class))).thenThrow(new RuntimeException("unable to connect to flickr"));
 
         TestSubscriber<String> testSubscriber = new TestSubscriber<>();
+
         //when
-        interactor.getAuthorizationUrl().subscribe(testSubscriber);
+        OauthInteractor sut = new OauthInteractor(authService, rxScheduler);
+        sut.getAuthorizationUrl().subscribe(testSubscriber);
 
         //then
         testSubscriber.assertError(RuntimeException.class);
