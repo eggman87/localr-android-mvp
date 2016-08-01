@@ -10,4 +10,8 @@
 
     <string name="alert_retry">retry</string>
     <string name="alert_exit">exit</string>
+
+    <string name="location_permission_required">Location permissions are required to use this app</string>
+
+    <string name="authorization_failure_format">Unable to start authentication process. Cause: %s</string>
 </resources>

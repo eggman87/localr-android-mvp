@@ -15,6 +15,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import com.eggman.localr.R;
 import com.eggman.localr.analytics.Screens;
@@ -118,7 +119,8 @@ public class HomeActivity extends BaseActivity implements HomeView {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 locationPermissionsGranted();
             } else {
-                //todo: add  no permission handling
+                Toast.makeText(this, R.string.location_permission_required, Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
     }

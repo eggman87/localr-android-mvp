@@ -66,7 +66,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void displayErrorToUser(String error) {
-        //todo: show dialog, with retry logic.
+        String errorMessage = String.format(getString(R.string.authorization_failure_format), error);
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
     public void loginClicked(View view) {
